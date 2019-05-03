@@ -1,4 +1,25 @@
-## React Native
+## React Native boiler plate
+- Clone this project for use.
+
+
+### command
+- run dev
+```
+npm install
+npm start
+react-native run-android
+```
+
+- js bundling
+```
+npm run bundle-android
+```
+
+- generate android release apk
+```
+npm run release-apk
+```
+
 
 ### feature
 - Mobx
