@@ -1,2 +1,2 @@
-export {default as CounterStore} from "./CouterStore";
+export {default as CounterStore} from "./CounterStore";
 export {default as CommonStore} from "./CommonStore";
