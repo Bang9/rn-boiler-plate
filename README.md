@@ -1,6 +1,6 @@
 ## React Native boiler plate
 - Clone this project for use.
-
+- Link with firebase project (downlaod google-services.json)
 
 ### command
 - run dev
