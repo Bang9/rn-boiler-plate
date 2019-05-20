@@ -1,11 +1,13 @@
 ## React Native boiler plate
+
+### installation
 - Clone this project for use.
 - Link with firebase project (downlaod google-services.json)
+- npm install
 
 ### command
 - run dev
 ```
-npm install
 npm start
 react-native run-android
 ```
