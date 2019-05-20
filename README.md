@@ -2,8 +2,8 @@
 
 ### installation
 - Clone this project for use.
-- Link with firebase project (downlaod google-services.json)
 - npm install
+- Link with firebase project (downlaod google-services.json)
 
 ### command
 - run dev
