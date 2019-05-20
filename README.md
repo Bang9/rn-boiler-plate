@@ -4,6 +4,7 @@
 - Clone this project for use.
 - npm install
 - Link with firebase project (downlaod google-services.json)
+- (optional) Set project name and bundle identifier with ['react-native-rename'](https://github.com/junedomingo/react-native-rename)
 
 ### command
 - run dev
