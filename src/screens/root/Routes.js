@@ -88,6 +88,8 @@ export default class Routes extends Component {
                             initial={true}
                             key={Screen.MAIN}
                             component={CounterScreen}
+                            hideNavBar={false}
+                            title={"COUNTER"}
                         />
 
                         <Tabs
@@ -112,7 +114,7 @@ export default class Routes extends Component {
                             />
                             <Scene
                                 hideNavBar={true}
-                                key={SCREEN.TAB_THREE}
+                                key={Screen.TAB_THREE}
                                 icon={(props)=>this.renderTabIcon(Screen.TAB_THREE,props)}
                                 component={TabThreeScreen}
                                 title={"android"}

@@ -3,7 +3,7 @@ import {View, Text, TouchableOpacity, StyleSheet} from "react-native";
 import {observer} from "mobx-react";
 import {Actions} from "react-native-router-flux";
 import {CounterStore} from "../../stores";
-import {APPTEXT, COMMON, SCREEN} from "../../commons";
+import {AppText, AppStyles, Screen} from "../../commons";
 
 @observer
 export default class CounterScreen extends Component {
@@ -17,8 +17,8 @@ export default class CounterScreen extends Component {
         return (
             <View style={{flex:1,alignItems:"center", justifyContent:"center"}}>
 
-                <Text>{APPTEXT.GREETING}</Text>
-                <Text style={{margin:COMMON.widthDp(15)}}>{count}</Text>
+                <Text>{AppText.GREETING}</Text>
+                <Text style={{margin:AppStyles.widthDp(15)}}>{count}</Text>
 
                 <View style={styles.buttonWrapper}>
                     <TouchableOpacity
@@ -52,10 +52,10 @@ export default class CounterScreen extends Component {
 
     _showModal(){
         //Actions.push(SCREEN.MAIN);
-        Actions.push(SCREEN.SPINNER_MODAL);
+        Actions.push(Screen.SPINNER_MODAL);
     }
     _showTabs(){
-        Actions.push(SCREEN.TABS);
+        Actions.push(Screen.TABS);
     }
 
     _add(){
@@ -70,21 +70,21 @@ export default class CounterScreen extends Component {
 
 const styles = StyleSheet.create({
     buttonWrapper:{
-        flexDirection:"row", justifyContent:"space-evenly", width:COMMON.widthDp(80), marginVertical:10
+        flexDirection:"row", justifyContent:"space-evenly", width:AppStyles.widthDp(80), marginVertical:10
     },
     button: {
-        width:COMMON.widthDp(30), height:COMMON.heightDp(4), alignItems:"center"
+        width:AppStyles.widthDp(30), height:AppStyles.heightDp(4), alignItems:"center"
     },
     red : {
-        backgroundColor:COMMON.red,
+        backgroundColor:AppStyles.red,
     },
     blue : {
-        backgroundColor:COMMON.blue,
+        backgroundColor:AppStyles.blue,
     },
     grey : {
-        backgroundColor:COMMON.grey8
+        backgroundColor:AppStyles.grey8
     },
     buttonText: {
-        color:COMMON.white, fontSize:COMMON.heightDp(3)
+        color:AppStyles.white, fontSize:AppStyles.heightDp(3)
     }
 });

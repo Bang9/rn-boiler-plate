@@ -3,7 +3,7 @@ import {View, ActivityIndicator, Text} from "react-native";
 import {Actions} from "react-native-router-flux";
 import Modal from "react-native-modal";
 
-import {COMMON} from "../../commons";
+import {AppStyles} from "../../commons";
 
 export default class SpinnerModal extends Component {
     constructor(props) {
@@ -22,9 +22,9 @@ export default class SpinnerModal extends Component {
                     isVisible={this.state.isVisible}
                 >
                     <View style={{flex: 1,alignItems:"center",justifyContent:"center"}}>
-                        <ActivityIndicator size={"large"} color={COMMON.blue} />
+                        <ActivityIndicator size={"large"} color={AppStyles.blue} />
 
-                        <Text onPress={this._hideModal} style={{color:COMMON.white, padding:10}}>
+                        <Text onPress={this._hideModal} style={{color:AppStyles.white, padding:10}}>
                             CLOSE
                         </Text>
                     </View>
