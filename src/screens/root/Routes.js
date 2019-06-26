@@ -13,8 +13,11 @@ import {
 } from "react-native";
 import {Actions,Scene,Router,Lightbox,Tabs} from "react-native-router-flux";
 import {observer} from "mobx-react/native";
+import SplashScreen from 'react-native-splash-screen';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import {COMMON,CONST,SCREEN} from '../../commons';
+
 
 /** Store **/
 import {CommonStore} from "../../stores";
@@ -54,14 +57,15 @@ export default class Routes extends Component {
     }
 
     _someLoadingProgress(){
-        setTimeout(()=>{this.setState({loaded:true})},500);
+        setTimeout(()=>{
+            this.setState({loaded:true},SplashScreen.hide)
+        },1000);
     }
 
     render() {
         const {loaded} = this.state;
 
         if(!loaded){
-            //TODO:splash screen hide here
             return(
                 <View style={{height:COMMON.height, width:COMMON.width, backgroundColor:"black"}} />
             )
@@ -97,21 +101,21 @@ export default class Routes extends Component {
                                 key={SCREEN.TAB_ONE}
                                 icon={(props)=>this.renderTabIcon(SCREEN.TAB_ONE,props)}
                                 component={TabOneScreen}
-                                title={"TAB1"}
+                                title={"google"}
                             />
                             <Scene
                                 hideNavBar={true}
                                 key={SCREEN.TAB_TWO}
                                 icon={(props)=>this.renderTabIcon(SCREEN.TAB_TWO,props)}
                                 component={TabTwoScreen}
-                                title={"TAB2"}
+                                title={"apple"}
                             />
                             <Scene
                                 hideNavBar={true}
                                 key={SCREEN.TAB_THREE}
                                 icon={(props)=>this.renderTabIcon(SCREEN.TAB_THREE,props)}
                                 component={TabThreeScreen}
-                                title={"TAB3"}
+                                title={"android"}
                             />
                         </Tabs>
                     </Scene>
@@ -127,31 +131,15 @@ export default class Routes extends Component {
     }
 
     renderTabIcon = (tabKey,props) => {
-        let icon;
-
-        switch(tabKey){
-            case SCREEN.TAB_ONE:
-                icon = require("../../images/tab_1.png");
-                break;
-            case SCREEN.TAB_TWO:
-                icon = require("../../images/tab_2.png");
-                break;
-            case SCREEN.TAB_THREE:
-                icon = require("../../images/tab_3.png");
-                break;
-        }
+        const {focused, activeTintColor, inactiveTintColor} = props;
+        const icons = {
+            [SCREEN.TAB_ONE]:'google',
+            [SCREEN.TAB_TWO]:'apple',
+            [SCREEN.TAB_THREE]:'android'
+        };
 
         return (
-            <Image
-                style={[
-                    styles.tabIcon,
-                    props.focused ?
-                        {tintColor:props.activeTintColor} :
-                        {tintColor:props.inactiveTintColor}
-                ]}
-                source={icon}
-                resizeMode={"contain"}
-            />
+            <Icon name={icons[tabKey]} size={20} color={focused ? activeTintColor : inactiveTintColor} />
         )
     };
 

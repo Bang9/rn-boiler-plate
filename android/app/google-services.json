@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "487399710941",
+    "firebase_url": "https://t2nters-boiler-plate.firebaseio.com",
+    "project_id": "t2nters-boiler-plate",
+    "storage_bucket": "t2nters-boiler-plate.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:487399710941:android:709f68d81f35724d",
+        "android_client_info": {
+          "package_name": "com.t2nters"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "487399710941-pn6e6ro8095qlroqcubd9mijavsljccm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5uLRuuu5W0hFWzBaC8k_yNIeLukXKo7g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "487399710941-pn6e6ro8095qlroqcubd9mijavsljccm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

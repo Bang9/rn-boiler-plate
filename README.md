@@ -33,3 +33,7 @@ npm run release-apk
 - React Native Animatable
 - React Native Responsive Screen
 - React Native Statusbar Height
+
+
+### Todo
+- Linking iOS modules
