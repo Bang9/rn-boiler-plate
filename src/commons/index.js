@@ -1,4 +1,4 @@
-export {default as APPTEXT} from "./AppText";
-export {default as COMMON} from "./Common";
-export {default as CONST} from "./Constant";
-export {default as SCREEN} from "./Screen";
+export {default as Const} from "./Constant";
+export {default as Screen} from "./Screen";
+export {default as AppStyles} from "./AppStyles";
+export {default as AppText} from "./AppText";

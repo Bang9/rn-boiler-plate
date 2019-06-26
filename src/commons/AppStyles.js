@@ -1,7 +1,7 @@
 import {getStatusBarHeight} from "react-native-status-bar-height";
 import {widthPercentageToDP, heightPercentageToDP, listenOrientationChange, removeOrientationListener} from "react-native-responsive-screen"
 
-const Common = {
+const AppStyles = {
     statusBarHeight:getStatusBarHeight(),
     navHeight:heightPercentageToDP(8),
     tabHeight:heightPercentageToDP(8),
@@ -34,4 +34,4 @@ const Common = {
     brightYellow : "#ffdf70",
 };
 
-export default Common;
+export default AppStyles;

@@ -16,7 +16,7 @@ import {observer} from "mobx-react/native";
 import SplashScreen from 'react-native-splash-screen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import {COMMON,CONST,SCREEN} from '../../commons';
+import {AppStyles,Const,Screen} from '../../commons';
 
 
 /** Store **/
@@ -67,7 +67,7 @@ export default class Routes extends Component {
 
         if(!loaded){
             return(
-                <View style={{height:COMMON.height, width:COMMON.width, backgroundColor:"black"}} />
+                <View style={{height:AppStyles.height, width:AppStyles.width, backgroundColor:"black"}} />
             )
         }
 
@@ -86,34 +86,34 @@ export default class Routes extends Component {
                         {/** Screens **/}
                         <Scene
                             initial={true}
-                            key={SCREEN.MAIN}
+                            key={Screen.MAIN}
                             component={CounterScreen}
                         />
 
                         <Tabs
-                            key={SCREEN.TABS}
+                            key={Screen.TABS}
                             showLabel={true}
                             tabBarPosition={"bottom"}
-                            activeTintColor={COMMON.blue}
+                            activeTintColor={AppStyles.blue}
                         >
                             <Scene
                                 hideNavBar={true}
-                                key={SCREEN.TAB_ONE}
-                                icon={(props)=>this.renderTabIcon(SCREEN.TAB_ONE,props)}
+                                key={Screen.TAB_ONE}
+                                icon={(props)=>this.renderTabIcon(Screen.TAB_ONE,props)}
                                 component={TabOneScreen}
                                 title={"google"}
                             />
                             <Scene
                                 hideNavBar={true}
-                                key={SCREEN.TAB_TWO}
-                                icon={(props)=>this.renderTabIcon(SCREEN.TAB_TWO,props)}
+                                key={Screen.TAB_TWO}
+                                icon={(props)=>this.renderTabIcon(Screen.TAB_TWO,props)}
                                 component={TabTwoScreen}
                                 title={"apple"}
                             />
                             <Scene
                                 hideNavBar={true}
                                 key={SCREEN.TAB_THREE}
-                                icon={(props)=>this.renderTabIcon(SCREEN.TAB_THREE,props)}
+                                icon={(props)=>this.renderTabIcon(Screen.TAB_THREE,props)}
                                 component={TabThreeScreen}
                                 title={"android"}
                             />
@@ -122,7 +122,7 @@ export default class Routes extends Component {
 
                     {/** Modals **/}
                     <Scene
-                        key={SCREEN.SPINNER_MODAL}
+                        key={Screen.SPINNER_MODAL}
                         component={SpinnerModal}
                     />
                 </Lightbox>
@@ -133,9 +133,9 @@ export default class Routes extends Component {
     renderTabIcon = (tabKey,props) => {
         const {focused, activeTintColor, inactiveTintColor} = props;
         const icons = {
-            [SCREEN.TAB_ONE]:'google',
-            [SCREEN.TAB_TWO]:'apple',
-            [SCREEN.TAB_THREE]:'android'
+            [Screen.TAB_ONE]:'google',
+            [Screen.TAB_TWO]:'apple',
+            [Screen.TAB_THREE]:'android'
         };
 
         return (
@@ -202,4 +202,4 @@ const styles = StyleSheet.create({
     }
 });
 
-YellowBox.ignoreWarnings(CONST.warnIgnore);
+YellowBox.ignoreWarnings(Const.warnIgnore);
