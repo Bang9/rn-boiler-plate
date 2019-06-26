@@ -1,12 +1,12 @@
 ## React Native boiler plate
 
-### installation
+### Installation
 - Clone this project for use.
 - npm install
 - Link with firebase project (downlaod google-services.json)
 - (optional) Set project name and bundle identifier with [react-native-rename](https://github.com/junedomingo/react-native-rename)
 
-### command
+### Command
 - run dev
 ```
 npm start
@@ -24,7 +24,7 @@ npm run release-apk
 ```
 
 
-### feature
+### Feature
 - State Manager ([mobx](https://github.com/mobxjs/mobx))
 - Router ([react-native-router-flux](https://github.com/aksonov/react-native-router-flux))
 - Modal ([react-native-modal](https://github.com/react-native-community/react-native-modal))
@@ -38,5 +38,5 @@ npm run release-apk
 - Messsage Bar ([react-native-message-bar](https://github.com/KBLNY/react-native-message-bar))
 
 
-### Todo
-- Linking iOS modules
+### To do
+- [ ] Linking iOS modules
