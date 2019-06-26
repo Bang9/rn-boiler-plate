@@ -6,7 +6,7 @@ import { MessageBarManager } from 'react-native-message-bar';
 
 import {CounterStore} from "../../stores";
 import {AppText, AppStyles, Screen} from "../../commons";
-import MessageControl from "../../utils/MessageControl";
+import {MessageControl} from "../../utils";
 
 @observer
 export default class CounterScreen extends Component {
