@@ -39,4 +39,5 @@ npm run release-apk
 
 
 ### To do
+- [ ] Add Window Commands(Scripts)
 - [ ] Linking iOS modules
