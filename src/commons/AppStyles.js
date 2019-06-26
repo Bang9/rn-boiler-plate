@@ -28,6 +28,7 @@ const AppStyles = {
     grey3 : "#333",
     red : "#ff5e5e",
     brightRed : "#fb766d",
+    green: '#41a852',
     blue : "#368fff",
     brightBlue : "#65a4fb",
     yellow : "#ffd133",

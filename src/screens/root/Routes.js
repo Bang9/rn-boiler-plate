@@ -11,11 +11,13 @@ import {
     NetInfo,
     Image
 } from "react-native";
-import {Actions,Scene,Router,Lightbox,Tabs} from "react-native-router-flux";
-import {observer} from "mobx-react/native";
+import {Actions,Scene,Router,Lightbox,Tabs,Overlay} from "react-native-router-flux";
 import SplashScreen from 'react-native-splash-screen';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {observer} from "mobx-react/native";
+import {observable} from "mobx";
 
+import {MessageBar} from '../../components';
 import {AppStyles,Const,Screen} from '../../commons';
 
 
@@ -34,15 +36,9 @@ import TabTwoScreen from "../tabs/TabTwoScreen";
 
 @observer
 export default class Routes extends Component {
-    constructor(props){
-        super(props);
-        this.state={
-            loaded : false,
-        };
-
-        this.appState = "";
-        this.backPressedTime = 0;
-    }
+    @observable loaded = false;
+    @observable appState = null;
+    @observable backPressedTime = 0;
 
     componentDidMount(){
         this._someLoadingProgress();
@@ -58,16 +54,15 @@ export default class Routes extends Component {
 
     _someLoadingProgress(){
         setTimeout(()=>{
-            this.setState({loaded:true},SplashScreen.hide)
+            this.loaded = true;
+            SplashScreen.hide();
         },1000);
     }
 
     render() {
-        const {loaded} = this.state;
-
-        if(!loaded){
+        if(!this.loaded){
             return(
-                <View style={{height:AppStyles.height, width:AppStyles.width, backgroundColor:"black"}} />
+                <View style={{height:AppStyles.height, width:AppStyles.width, backgroundColor:AppStyles.grey3}} />
             )
         }
 
@@ -77,57 +72,61 @@ export default class Routes extends Component {
                 sceneStyle={styles.routerScene}
                 backAndroidHandler={this._backHandler}
             >
-                <Lightbox>
-                    <Scene
-                        key={"root"}
-                        sceneStyle = {styles.scene}
-                        hideNavBar={true}
-                    >
-                        {/** Screens **/}
+                <Overlay key={"overlay"}>
+                    <Lightbox key={"lightbox"}>
                         <Scene
-                            initial={true}
-                            key={Screen.MAIN}
-                            component={CounterScreen}
-                            hideNavBar={false}
-                            title={"COUNTER"}
-                        />
-
-                        <Tabs
-                            key={Screen.TABS}
-                            showLabel={true}
-                            tabBarPosition={"bottom"}
-                            activeTintColor={AppStyles.blue}
+                            key={"root"}
+                            sceneStyle = {styles.scene}
+                            hideNavBar={true}
                         >
+                            {/** Screens **/}
                             <Scene
-                                hideNavBar={true}
-                                key={Screen.TAB_ONE}
-                                icon={(props)=>this.renderTabIcon(Screen.TAB_ONE,props)}
-                                component={TabOneScreen}
-                                title={"google"}
+                                initial={true}
+                                key={Screen.MAIN}
+                                component={CounterScreen}
+                                hideNavBar={false}
+                                title={"COUNTER"}
                             />
-                            <Scene
-                                hideNavBar={true}
-                                key={Screen.TAB_TWO}
-                                icon={(props)=>this.renderTabIcon(Screen.TAB_TWO,props)}
-                                component={TabTwoScreen}
-                                title={"apple"}
-                            />
-                            <Scene
-                                hideNavBar={true}
-                                key={Screen.TAB_THREE}
-                                icon={(props)=>this.renderTabIcon(Screen.TAB_THREE,props)}
-                                component={TabThreeScreen}
-                                title={"android"}
-                            />
-                        </Tabs>
-                    </Scene>
 
-                    {/** Modals **/}
-                    <Scene
-                        key={Screen.SPINNER_MODAL}
-                        component={SpinnerModal}
-                    />
-                </Lightbox>
+                            <Tabs
+                                key={Screen.TABS}
+                                showLabel={true}
+                                tabBarPosition={"bottom"}
+                                activeTintColor={AppStyles.blue}
+                            >
+                                <Scene
+                                    hideNavBar
+                                    key={Screen.TAB_ONE}
+                                    icon={(props)=>this.renderTabIcon(Screen.TAB_ONE,props)}
+                                    component={TabOneScreen}
+                                    title={"google"}
+                                />
+                                <Scene
+                                    hideNavBar
+                                    key={Screen.TAB_TWO}
+                                    icon={(props)=>this.renderTabIcon(Screen.TAB_TWO,props)}
+                                    component={TabTwoScreen}
+                                    title={"apple"}
+                                />
+                                <Scene
+                                    hideNavBar
+                                    key={Screen.TAB_THREE}
+                                    icon={(props)=>this.renderTabIcon(Screen.TAB_THREE,props)}
+                                    component={TabThreeScreen}
+                                    title={"android"}
+                                />
+                            </Tabs>
+                        </Scene>
+
+                        {/** Modals **/}
+                        <Scene
+                            key={Screen.SPINNER_MODAL}
+                            component={SpinnerModal}
+                        />
+                    </Lightbox>
+
+                    <Scene component={MessageBar}/>
+                </Overlay>
             </Router>
         );
     }
@@ -173,7 +172,7 @@ export default class Routes extends Component {
     };
 
     _appStateHandler = (nextAppState) => {
-        if (this.state.isLoaded && this.appState === 'background' && nextAppState === 'active') {
+        if (this.loaded && this.appState === 'background' && nextAppState === 'active') {
             // console.log("LOCK : ",Actions.currentScene);
             // if(!Actions.currentScene.match(/screen|screen2|screen3/)){
             //  can some screen locking!

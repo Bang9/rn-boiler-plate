@@ -2,8 +2,11 @@ import React, {Component} from "react";
 import {View, Text, TouchableOpacity, StyleSheet} from "react-native";
 import {observer} from "mobx-react";
 import {Actions} from "react-native-router-flux";
+import { MessageBarManager } from 'react-native-message-bar';
+
 import {CounterStore} from "../../stores";
 import {AppText, AppStyles, Screen} from "../../commons";
+import MessageControl from "../../utils/MessageControl";
 
 @observer
 export default class CounterScreen extends Component {
@@ -20,7 +23,7 @@ export default class CounterScreen extends Component {
                 <Text>{AppText.GREETING}</Text>
                 <Text style={{margin:AppStyles.widthDp(15)}}>{count}</Text>
 
-                <View style={styles.buttonWrapper}>
+                <View style={styles.counterWrapper}>
                     <TouchableOpacity
                         onPress={this._add}
                         style={[styles.button, styles.blue]}>
@@ -44,6 +47,10 @@ export default class CounterScreen extends Component {
                     <TouchableOpacity style={[styles.button, styles.grey]} onPress={this._showTabs} >
                         <Text style={styles.buttonText}>TABS</Text>
                     </TouchableOpacity>
+
+                    <TouchableOpacity style={[styles.button, styles.grey]} onPress={this._showAlert} >
+                        <Text style={styles.buttonText}>ALERT</Text>
+                    </TouchableOpacity>
                 </View>
 
             </View>
@@ -57,6 +64,9 @@ export default class CounterScreen extends Component {
     _showTabs(){
         Actions.push(Screen.TABS);
     }
+    _showAlert(){
+        MessageControl.info('Message','hello this is bottom message bar')
+    }
 
     _add(){
         CounterStore.add();
@@ -69,11 +79,14 @@ export default class CounterScreen extends Component {
 
 
 const styles = StyleSheet.create({
+    counterWrapper:{
+        flexDirection:'row', justifyContent:"space-evenly", width:AppStyles.widthDp(80), marginVertical:10
+    },
     buttonWrapper:{
-        flexDirection:"row", justifyContent:"space-evenly", width:AppStyles.widthDp(80), marginVertical:10
+        alignItems:'center', justifyContent:"space-evenly", width:AppStyles.widthDp(80), marginVertical:10
     },
     button: {
-        width:AppStyles.widthDp(30), height:AppStyles.heightDp(4), alignItems:"center"
+        width:AppStyles.widthDp(30), height:AppStyles.heightDp(4), alignItems:"center", margin:5
     },
     red : {
         backgroundColor:AppStyles.red,
